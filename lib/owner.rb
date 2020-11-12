@@ -32,7 +32,7 @@ class Owner
       cat.owner.name == Owner.name
      all_cats << cat
     end
-    self.all_cats
+    all_cats
   end
 
 
