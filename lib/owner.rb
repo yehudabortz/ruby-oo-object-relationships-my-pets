@@ -1,3 +1,4 @@
+require 'pry'
 class Owner
 
   attr_reader :name, :species
@@ -27,15 +28,23 @@ class Owner
 
   # 1. @owner.cats searches through all cats that have the @owner associated and returns them
   def cats
-    all_cats = []
-    Cat.all.each do |cat|
-      cat.owner.name == Owner.name
-     all_cats << cat
-    end
-    all_cats
+     Cat.all.select {|cat| cat.owner == self}
   end
+  
+  def dogs
+     Dog.all.select {|dog| dog.owner == self}
+  end
+
+  def buy_cat(cat_name)
+    Cat.all.select do |cat|
+      cat.name == cat_name
+      cat.owner = self
+    end
+  end
+  
 
 
 
 
 end
+# binding.pry
